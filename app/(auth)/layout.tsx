@@ -4,13 +4,13 @@ import Image from 'next/image';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen">
-      <section className="bg-brand p-10">
-        <div>
+      <section className="hidden w-1/2 items-center justify-center bg-brand p-10 lg:flex xl:w-2/5 ">
+        <div className="flex max-h-[800px] max-w-[430px] flex-col justify-center space-y-12">
           <Image
-            src="/favicon.ico"
+            src="/assets/icons/logo.png"
             alt="logo"
-            width={16}
-            height={16}
+            width={200}
+            height={200}
             className="h-auto"
           />
           <div className="space-y-5 text-white">
@@ -19,7 +19,26 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               This is where you store all your documents.
             </p>
           </div>
+          <Image
+            src="/assets/images/files.png"
+            height={342}
+            width={342}
+            alt="illustration"
+            className="hover:rotate-2 hover:scale-105 transition-all"
+          />
         </div>
+      </section>
+      <section className="flex flex-1 flex-col items-center bg:white p-4py-10 lg:justify-center lg:py-0 lg:p-10">
+        <div>
+          <Image
+            src="/assets/icons/logo-full-brand.svg"
+            alt="logo"
+            width={224}
+            height={82}
+            className="h-auto w-[200px] lg:w-[250px]"
+          />
+        </div>
+        {children}
       </section>
     </div>
   );
