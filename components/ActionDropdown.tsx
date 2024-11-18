@@ -24,7 +24,8 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { renameFile } from '@/lib/actions/file.actions';
 import { usePathname } from 'next/navigation';
-import { DeleteFile, FileDetails, ShareFile } from './ActionsModalContent';
+import { DeleteFile, FileDetails } from './ActionsModalContent';
+import ShareInput from '@/components/ShareInput';
 
 const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,6 +33,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [action, setAction] = useState<ActionType | null>(null);
   const [name, setName] = useState(file.name);
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('');
 
   const path = usePathname();
 
@@ -40,7 +42,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     setIsDropdownOpen(false);
     setAction(null);
     setName(file.name);
-    //setEmail('');
+    // setEmail('');
   };
 
   const handleAction = async () => {
@@ -76,7 +78,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     return (
       <DialogContent className="schad-dialog button">
         <DialogHeader className="flex flex-col gap-3">
-          <DialogTitle className="text-center text-light-100 capitalize">
+          <DialogTitle className="text-center capitalize text-light-100">
             {value}
           </DialogTitle>
           {value === 'rename' && (
@@ -88,7 +90,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
           )}
           {value === 'details' && <FileDetails file={file} />}
           {value === 'delete' && <DeleteFile file={file} />}
-          {value === 'share' && <ShareFile file={file} />}
+          {value === 'share' && <ShareInput file={file} />}
         </DialogHeader>
         {['rename', 'delete', 'share'].includes(value) && (
           <DialogFooter className="flex flex-col gap-3 md:flex-row">

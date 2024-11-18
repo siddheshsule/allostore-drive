@@ -45,7 +45,3 @@ export const FileDetails = ({ file }: { file: Models.Document }) => {
 export const DeleteFile = ({ file }: { file: Models.Document }) => {
   return <div>DeleteFile</div>;
 };
-
-export const ShareFile = ({ file }: { file: Models.Document }) => {
-  return <div>ShareFile</div>;
-};
