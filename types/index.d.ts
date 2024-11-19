@@ -9,6 +9,7 @@ export interface ActionType {
 }
 
 export interface SearchParamProps {
+  // eslint-disable-next-line no-undef
   params?: Promise<SegmentParams>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
@@ -70,7 +71,9 @@ export interface ThumbnailProps {
 }
 
 export interface ShareInputProps {
+  // eslint-disable-next-line no-undef
   file: Models.Document;
+  // eslint-disable-next-line no-undef
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onRemove: (email: string) => void;
 }
