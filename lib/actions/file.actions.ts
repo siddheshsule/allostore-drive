@@ -2,6 +2,7 @@
 
 import {
   DeleteFileProps,
+  GetFilesProps,
   RenameFileProps,
   UpdateFileUsersProps,
   UploadFileProps,
@@ -55,7 +56,13 @@ export const uploadFile = async ({
   }
 };
 
-function createQueries(currentUser: Models.Document) {
+function createQueries(
+  currentUser: Models.Document,
+  types: string[],
+  searchText: string,
+  sort: string,
+  limit?: number
+) {
   const queries = [
     Query.or([
       Query.equal('owner', [currentUser.$id]),
@@ -63,23 +70,31 @@ function createQueries(currentUser: Models.Document) {
     ]),
   ];
 
+  if (types.length > 0) queries.push(Query.equal('type', types));
+
   return queries;
 }
 
-export const getFiles = async () => {
+export const getFiles = async ({
+  types = [],
+  searchText = '',
+  sort = '$createdAt-desc',
+  limit,
+}: GetFilesProps) => {
   const { databases } = await createAdminClient();
 
   try {
     const currentUser = await getCurrentUser();
     if (!currentUser) throw new Error('User not found');
 
-    const queries = createQueries(currentUser);
+    const queries = createQueries(currentUser, types, searchText, sort, limit);
 
     const files = await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.filesCollectionId,
       queries
     );
+    console.log({ files });
 
     return parseStringify(files);
   } catch (error) {
