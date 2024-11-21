@@ -54,13 +54,14 @@ const OtpModal = ({
   };
 
   const handleResendOtp = async () => {
+    // eslint-disable-next-line spaced-comment
     //Call the API to resend the OTP
-    await sendEmailOTP(email);
+    await sendEmailOTP({ email });
   };
   return (
     <div>
       <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-        <AlertDialogContent className="shad-slert-dialog">
+        <AlertDialogContent className="shad-alert-dialog">
           <AlertDialogHeader className="relative flex justify-center">
             <AlertDialogTitle className="h2 text-center">
               Enter Your OTP
@@ -107,7 +108,7 @@ const OtpModal = ({
                   />
                 )}
               </AlertDialogAction>
-              <div className="subtitle-2mt-2text-center text-light-100">
+              <div className="subtitle-2 mt-2 text-center text-light-100">
                 Did&apos;nt receive the code?
                 <Button
                   type="button"

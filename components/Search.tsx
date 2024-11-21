@@ -5,10 +5,10 @@ import { Input } from './ui/input';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
-import Thumbnail from './Thumbnail';
-import FormattedDateTime from './FormattedDateTime';
 import { Models } from 'node-appwrite';
 import { getFiles } from '@/lib/actions/file.actions';
+import { FormattedDateTime } from './FormattedDateTime';
+import { Thumbnail } from './Thumbnail';
 
 const Search = () => {
   const [query, setQuery] = useState('');

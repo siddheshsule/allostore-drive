@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-const Thumbnail = ({
+export const Thumbnail = ({
   type,
   extension,
   url = '',
@@ -35,5 +35,3 @@ const Thumbnail = ({
     </figure>
   );
 };
-
-export default Thumbnail;

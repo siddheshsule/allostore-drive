@@ -28,7 +28,7 @@ import {
   updateFileUsers,
 } from '@/lib/actions/file.actions';
 import { usePathname } from 'next/navigation';
-import { DeleteFile, FileDetails, ShareInput } from './ActionsModalContent';
+import { FileDetails, ShareInput } from './ActionsModalContent';
 
 const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

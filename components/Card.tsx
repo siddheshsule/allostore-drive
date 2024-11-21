@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Models } from 'node-appwrite';
 import React from 'react';
-import Thumbnail from './Thumbnail';
 import { convertFileSize } from '@/lib/utils';
-import FormattedDateTime from './FormattedDateTime';
 import ActionDropdown from './ActionDropdown';
+import { Thumbnail } from './Thumbnail';
+import { FormattedDateTime } from './FormattedDateTime';
 
 const Card = ({ file }: { file: Models.Document }) => {
   return (

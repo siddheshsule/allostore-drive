@@ -4,11 +4,11 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Button } from './ui/button';
 import Image from 'next/image';
-import Thumbnail from './Thumbnail';
 import { MAX_FILE_SIZE } from '@/constants';
 import { useToast } from '@/hooks/use-toast';
 import { uploadFile } from '@/lib/actions/file.actions';
 import { usePathname } from 'next/navigation';
+import { Thumbnail } from './Thumbnail';
 
 interface Props {
   ownerId: string;
