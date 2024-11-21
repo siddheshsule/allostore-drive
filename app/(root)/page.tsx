@@ -12,10 +12,17 @@ import { Chart } from '@/components/Chart';
 
 const Dashboard = async () => {
   // Parallel requests
-  const [files, totalSpace] = await Promise.all([
-    getFiles({ types: [], limit: 10 }),
-    getTotalSpaceUsed(),
-  ]);
+  let files = { total: 0, documents: [] };
+  let totalSpace = { used: 0 };
+
+  try {
+    [files, totalSpace] = await Promise.all([
+      getFiles({ types: [], limit: 10 }),
+      getTotalSpaceUsed(),
+    ]);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
 
   // Get usage summary
   const usageSummary = getUsageSummary(totalSpace);
@@ -23,7 +30,7 @@ const Dashboard = async () => {
   return (
     <div className="dashboard-container">
       <section>
-        <Chart used={totalSpace.used} />
+        <Chart used={totalSpace?.used || 0} />
 
         {/* Uploaded file type summaries */}
         <ul className="dashboard-summary-list">
@@ -43,7 +50,7 @@ const Dashboard = async () => {
                     className="summary-type-icon"
                   />
                   <h4 className="summary-type-size">
-                    {convertFileSize(summary.size) || 0}
+                    {convertFileSize(summary.size) || '0'}
                   </h4>
                 </div>
 
