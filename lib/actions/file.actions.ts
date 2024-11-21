@@ -64,16 +64,20 @@ function createQueries(
   sort: string,
   limit?: number
 ) {
-  const queries = [
-    Query.or([
-      Query.equal('owner', [currentUser.$id]),
-      Query.contains('users', [currentUser.email]),
-    ]),
-  ];
+  try {
+    const queries = [
+      Query.or([
+        Query.equal('owner', [currentUser.$id]),
+        Query.contains('users', [currentUser.email]),
+      ]),
+    ];
 
-  if (types.length > 0) queries.push(Query.equal('type', types));
+    if (types.length > 0) queries.push(Query.equal('type', types));
 
-  return queries;
+    return queries;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export const getFiles = async ({
