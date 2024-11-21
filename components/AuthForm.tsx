@@ -56,7 +56,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
               email: values.email,
             })
           : await signInUser({ email: values.email });
-          
+
       setAccountId(user.accountId);
     } catch (error) {
       setErrorMessages('Failed to create an account. Please try again.');
@@ -68,7 +68,9 @@ const AuthForm = ({ type }: { type: FormType }) => {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="auth-form">
-          <h1>{type === 'sign-in' ? 'Sign In' : 'Sign Up'}</h1>
+          <h1 className="h1 text-center text-rose-500">
+            {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
+          </h1>
           {type === 'sign-up' && (
             <FormField
               control={form.control}
@@ -142,7 +144,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
               href={type === 'sign-in' ? '/sign-up' : '/sign-in'}
               className="ml-1 font-medium text-brand"
             >
-              {type === 'sign-in' ? 'Sign In' : 'Sign up'}
+              {type === 'sign-up' ? 'Sign In' : 'Sign Up'}
             </Link>
           </div>
         </form>

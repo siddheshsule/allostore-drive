@@ -9,14 +9,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Image
             src="/assets/icons/logo.png"
             alt="logo"
-            width={200}
-            height={200}
-            className="h-auto"
+            width={250}
+            height={250}
           />
           <div className="space-y-5 text-white">
-            <h1 className="h1">Manage your files the best way</h1>
-            <p className="body-1">
-              This is where you store all your documents.
+            <h1 className="text-6xl space">Manage Your Files, Your Way</h1>
+            <p className="">
+              Take control of your documents with <em>AlloStore</em>. Effortless
+              file management and sharing at your fingertips.
             </p>
           </div>
           <Image

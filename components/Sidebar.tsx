@@ -19,10 +19,10 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
     <aside className="sidebar">
       <Link href="/">
         <Image
-          src="/assets/icons/logo-full-brand.svg"
+          src="/assets/icons/logo-brand.svg"
           alt="logo"
-          width={160}
-          height={50}
+          width={280}
+          height={80}
           className="hidden h-auto lg:block"
         />
 
@@ -72,7 +72,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
 
       <div className="sidebar-user-info">
         <Image
-          src={avatar}
+          src="/assets/icons/avatar.svg"
           alt="Avatar"
           width={44}
           height={44}
