@@ -25,6 +25,8 @@ export interface GetFilesProps {
   searchText?: string;
   sort?: string;
   limit?: number;
+  // eslint-disable-next-line no-undef
+  documents?: Models.Document[];
 }
 export interface RenameFileProps {
   fileId: string;
