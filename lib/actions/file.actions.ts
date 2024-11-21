@@ -100,6 +100,7 @@ export const getFiles = async ({
     return parseStringify(files);
   } catch (error) {
     handleError(error, 'Failed to get files');
+    return { total: 0, documents: [] };
   }
 };
 
